@@ -1,0 +1,26 @@
+<h2>Perfis</h2>
+
+<ul class="profiles">
+  <li *ngFor="let p of profiles" (click)="getProfile(p.pk)">
+    <span class="badge">
+      {{p.pk}}
+    </span> {{p.name}} {{p.email}}
+  </li>
+</ul>
+<div *ngIf="profile">
+  <h3>
+    Informações do perfil    
+  </h3>
+  <ul class="profiles">
+    <li> <span class="badge">
+      Nome: 
+    </span> {{profile.name}}
+  </li>
+    <li>
+      <span class="badge">
+        Email:
+      </span> {{profile.email}}</li>
+    <li>Enderço: {{profile.address.city}}</li>
+    <li>Dono do perfil: {{profile.owner}} </li>
+  </ul>
+</div>
