@@ -16,4 +16,10 @@ export class ProfileService {
   getProfile(pk: number){
     return this.http.get<Array<any>>(`${this.profilesUrl + pk}`)
   }
+  postProfile(profile: any, token: string){
+    return this.http.post(this.profilesUrl,profile,{headers:({'Content-Type':'application/json','Authorization':'Token ' + token})});
+  }
+  deleteProfile(pk: number,token: string){
+    return this.http.delete(this.profilesUrl + pk,{headers:({'Content-Type':'application/json','Authorization':'Token ' + token})})
+  }
 }

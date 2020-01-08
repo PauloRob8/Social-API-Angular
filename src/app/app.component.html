@@ -1,3 +1,14 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<h1>Social Midia API</h1>
-<app-profile-list></app-profile-list>
+<nav>
+    <div class="nav-wrapper">
+      <a routerLink="">Social Midia API</a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li routerLinkActive="active"><a routerLink='/perfis'>Perfis</a></li>
+        <li routerLinkActive="active"><a routerLink='/login'>Login</a></li>
+      </ul>
+    </div>
+  </nav>
+
+<div class="container">
+    <router-outlet></router-outlet>
+</div>

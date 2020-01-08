@@ -1,0 +1,20 @@
+<section>
+  <div>
+    <form method="post" #frm="ngForm" (ngSubmit)="login(frm)">
+      <div class="form-group">
+        <label for="username">Nome de usuário</label>
+        <input type="text" id="username" name="username"
+          class="form-control" placeholder="Nome"
+          [(ngModel)]="user.username" required/>
+      </div>
+      <div class="form-group">
+        <label for="password">Senha</label>
+        <input type="password" id="senha" name="senha"
+          class="form-control" placeholder="Senha"
+          [(ngModel)]="user.password" required/>
+      </div>
+      <button type="submit" class="btn btn-primary"
+        [disabled]="frm.invalid">Logar</button>
+    </form>
+  </div>
+</section>

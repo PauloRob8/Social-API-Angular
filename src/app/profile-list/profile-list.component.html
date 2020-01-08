@@ -1,10 +1,11 @@
-<h2>Perfis</h2>
+<h2 class="flow-text">Perfis</h2>
 
 <ul class="profiles">
   <li *ngFor="let p of profiles" (click)="getProfile(p.pk)">
     <span class="badge">
       {{p.pk}}
-    </span> {{p.name}} {{p.email}}
+    </span>{{p.email}}
+    <button (click)="deleteProfile(p.pk)">Deletar</button>
   </li>
 </ul>
 <div *ngIf="profile">
@@ -20,7 +21,17 @@
       <span class="badge">
         Email:
       </span> {{profile.email}}</li>
-    <li>Enderço: {{profile.address.city}}</li>
-    <li>Dono do perfil: {{profile.owner}} </li>
+    <li>
+      <span class="badge">
+        Endereço: </span>
+      {{profile.address.city}}</li>
+    <li> 
+      <span class="badge">
+        Dono do perfil:
+    </span> {{profile.owner}} </li>
   </ul>
 </div>
+
+<button routerLinkActive="active"><a routerLink='/perfil-add'>Criar novo perfil</a></button>
+
+
