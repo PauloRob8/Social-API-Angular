@@ -25,9 +25,5 @@ export class LoginComponent implements OnInit {
       this.router.navigate(['perfis'])
     })
   }
-  logout(){
-    this.user = null;
-    localStorage.clear();
-  }
 
 }

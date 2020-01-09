@@ -14,4 +14,8 @@ export class LoginService {
     return this.http.post(this.authUrl,user,{headers:({'Content-Type':'application/json'})})
   }
 
+  logout(){
+    localStorage.clear();
+  }
+
 }

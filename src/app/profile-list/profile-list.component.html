@@ -1,12 +1,18 @@
-<h2 class="flow-text">Perfis</h2>
-
+<div *ngIf="loggedUser">
+  <h2>Bem vindo {{loggedUser.name}}</h2>
+</div>
+<h3 class="flow-text">Perfis da rede social</h3>
 <ul class="profiles">
-  <li *ngFor="let p of profiles" (click)="getProfile(p.pk)">
+  <div *ngFor="let p of profiles">  
+  <li (click)="getProfile(p.pk)">
     <span class="badge">
       {{p.pk}}
     </span>{{p.email}}
-    <button (click)="deleteProfile(p.pk)">Deletar</button>
   </li>
+  <div *ngIf="loggedUser"> 
+    <button (click)="putProfileForm(p.pk)">Atualizar Perfil</button>
+    <button (click)="deleteProfile(p.pk)">Deletar</button></div>
+  </div>
 </ul>
 <div *ngIf="profile">
   <h3>
@@ -24,14 +30,70 @@
     <li>
       <span class="badge">
         Endereço: </span>
-      {{profile.address.city}}</li>
+      {{profile.address.zipcode}},{{profile.address.city}}</li>
     <li> 
       <span class="badge">
         Dono do perfil:
     </span> {{profile.owner}} </li>
   </ul>
 </div>
+<section>
+  <h3>
+    Editar o perfil    
+  </h3>
+  <div *ngIf="put_profile">
+    <form method="put" #frm="ngForm" (ngSubmit)="updateProfile(put_profile.pk)"> 
+      <div class="form-group">
+        <label for="nome">Nome</label>
+        <input type="text" id="nome" name="nome"
+          class="form-control" placeholder="Nome  *" value="put_profile.name"
+          [(ngModel)]="put_profile.name" required/>
+      </div>
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email"
+          class="form-control" placeholder="Email *" value="put_profile.email"
+          [(ngModel)]="put_profile.email" required/>
+      </div>
+      <div class="form-group">
+        <label for="city">Cidade</label>
+        <input type="text" id="city" name="city"
+          class="form-control" placeholder="Cidade *" value="put_profile.address.city"
+          [(ngModel)]="put_profile.address.city" required/>
+      </div>
 
-<button routerLinkActive="active"><a routerLink='/perfil-add'>Criar novo perfil</a></button>
+      <div class="form-group">
+        <label for="street">Rua</label>
+        <input type="text" id="street" name="street"
+          class="form-control" placeholder="rua *" value="put_profile.address.street"
+          [(ngModel)]="put_profile.address.street" required/>
+      </div>
+
+      <div class="form-group">
+        <label for="cep">Cep</label>
+        <input type="text" id="cep" name="cep"
+          class="form-control" placeholder="CEP *" value="put_profile.address.zipcode"
+          [(ngModel)]="put_profile.address.zipcode" required/>
+      </div>
+
+      <div class="form-group">
+        <label for="suite">Apartamento</label>
+        <input type="text" id="suite" name="suite"
+          class="form-control" placeholder="Apartamento  *" value="put_profile.address.suite"
+          [(ngModel)]="put_profile.address.suite" required/>
+      </div>
+
+      <button type="submit"
+          [disabled]="frm.invalid">Atualizar Perfil</button>
+    </form>
+  </div>
+</section>
+
+<div *ngIf="loggedUser">
+  <button type="submit"><a routerLink='/perfil-add'>Criar novo perfil</a></button> 
+  <button (click)="logout()" type="submit">Logout</button>
+</div>
+
+
 
 
