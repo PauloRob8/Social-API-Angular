@@ -1,6 +1,11 @@
-# Angular
-
+# CRUD API with Angular
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.0.6.
+
+# API
+ API made with Django [Social API](https://github.com/PauloRob8/Programa-o-para-internet-II/tree/master/social_api)
+ 
+## Project running
+[Video explicando o projeto](https://www.youtube.com/watch?v=7UC7V9XHUUo)
 
 ## Development server
 
