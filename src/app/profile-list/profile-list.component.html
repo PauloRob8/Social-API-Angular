@@ -38,10 +38,10 @@
   </ul>
 </div>
 <section>
-  <h3>
-    Editar o perfil    
-  </h3>
   <div *ngIf="put_profile">
+    <h3>
+      Editar o perfil    
+    </h3>
     <form method="put" #frm="ngForm" (ngSubmit)="updateProfile(put_profile.pk)"> 
       <div class="form-group">
         <label for="nome">Nome</label>
